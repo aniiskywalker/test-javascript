@@ -22,11 +22,15 @@
  * Imprima el resultado en consola
  * 
  */
-console.log('Array', employees)
+import employees from './data';
+console.log('Array', employees);
 
+function getEmployeesFromDepartment(employees, parameter) {
+  const result = employees.filter(a => a.fisrtName == parameter || a.lastName == parameter || a.age == parameter || a.department == parameter);
+  return result;
+};
 
-
-
+console.log(getEmployeesFromDepartment(employees, 'Marketing'));
 
 
 
@@ -45,10 +49,15 @@ console.log('Array', employees)
  */
 
 
+let marketingEmployees = getEmployeesFromDepartment(employees, 'Marketing')
+function getAverageAge(marketingEmployees) {
+  const sum = (a, b) => a + b;
+  const sigma = marketingEmployees.map(e => e.age).reduce(sum, 0);
+  const avg = Math.round(sigma/marketingEmployees.length);
+  return avg;
+};
 
-
-
-
+console.log(getAverageAge(marketingEmployees))
 
 
 
@@ -69,8 +78,16 @@ console.log('Array', employees)
  * 
  */
 
-
- 
+let developEmployees = getEmployeesFromDepartment(employees, 'Development');
+console.log(developEmployees);
+function getEmployeesAgedPlusOne(developEmployees) {
+  const result = [...developEmployees];
+  result.forEach(e => {
+    ++e.age;
+  })
+  return result;
+};
+ console.log(getEmployeesAgedPlusOne(developEmployees));
 
 
 
@@ -91,7 +108,11 @@ let employee = {
   department: 'Marketing'
 }
 
-
+function changeDepartment(employee) {
+  var result = employee;
+  result.department = 'Development';
+  return result;
+}
 
 
 
@@ -105,8 +126,14 @@ console.log(changeDepartment(employee))
  * Crea una función en la cual solo se reciba un parámetro y se puedan sumar hasta 3 números
  * 
  * Escribe aquí debajo como se llama a este concepto
- * 
+ * se llama destructuring
  */
+function buildSum(parameter){
+  const sum = (a, b, c) => a+ b + c;
+  const arr = parameter;
+  const result = sum(...arr);
+  return result
+}
 
 
  console.log(buildSum(1)(2)(3))
