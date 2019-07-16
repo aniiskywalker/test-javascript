@@ -126,7 +126,7 @@ console.log(changeDepartment(employee))
  * Crea una función en la cual solo se reciba un parámetro y se puedan sumar hasta 3 números
  * 
  * Escribe aquí debajo como se llama a este concepto
- * se llama destructuring
+ * destructuring, spread syntax
  */
 function buildSum(parameter){
   const sum = (a, b, c) => a+ b + c;
